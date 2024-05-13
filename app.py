@@ -465,12 +465,12 @@ if selected == "Insights":
         df = postgres_operations.get_df_from_query(select_statement,["Channel_Name","Total_Videos"])
         st.write(df)
         st.write("###### :blue[Number of videos in each channel :]")
-        st.bar_chart(df, x = df.columns[0], y = df.columns[1])
+        #st.bar_chart(df, x = df.columns[0], y = df.columns[1])
         fig = px.bar(df,  
                      x=df.columns[0],
                      y=df.columns[1],
                      orientation='v',
-                     color=df.Channel_Name[0]
+                     color=df.columns[0]
                     )
         st.plotly_chart(fig,use_container_width=True)
 
