@@ -189,13 +189,7 @@ class mongo_operations:
                 cm_list.append(cm_data["comment_information"][i])
         df_comment_info=pd.DataFrame(cm_list)
         return df_comment_info
-    
-    # FUNCTION TO GET CHANNEL NAMES FROM MONGODB
-    def channel_names():   
-        ch_names = []
-        for i in mongo_operations.collection.find({},{"_id":0,"channel_information":1}):
-            ch_names.append(i['Channel_Name'])
-        return ch_names
+
 
 class postgres_operations:
 
@@ -376,6 +370,7 @@ class postgres_operations:
         postgres_operations.cursor.execute(select_query)
         return pd.DataFrame(postgres_operations.cursor.fetchall(),columns=column_names)
 
+#STREAMLIT PART
 st.set_page_config(page_title= "Youtube Data Harvesting and Warehousing")
 
 # CREATING OPTION MENU
